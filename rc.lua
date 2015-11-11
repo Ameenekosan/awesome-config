@@ -263,8 +263,8 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
+    --awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
+    --awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
     awful.key({}, "XF86AudioRaiseVolume",function () awful.util.spawn("dvol -i 2") end),
     awful.key({}, "XF86AudioLowerVolume",function () awful.util.spawn("dvol -d 2") end),
@@ -306,14 +306,16 @@ awful.util.spawn("slock") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
+    awful.key({ modkey,           }, "Right", function () awful.tag.incmwfact( 0.05)    end),
+    awful.key({ modkey,           }, "Left",  function () awful.tag.incmwfact(-0.05)    end),
+    awful.key({ modkey, "Shift"   }, "Left",  function () awful.tag.incnmaster( 1)      end),
+    awful.key({ modkey, "Shift"   }, "Right", function () awful.tag.incnmaster(-1)      end),
+    awful.key({ modkey, "Control" }, "Left",  function () awful.tag.incncol( 1)         end),
+    awful.key({ modkey, "Control" }, "Right", function () awful.tag.incncol(-1)         end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
+
+    awful.key({ modkey }, "l", function () awful.util.spawn("/home/amee/bin/lock") end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
